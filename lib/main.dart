@@ -21,8 +21,6 @@ class WeatherApp extends StatefulWidget {
   WeatherAppState createState() => WeatherAppState();
 }
 
-bool _isLoading = false;
-
 class WeatherAppState extends State<WeatherApp> {
   LocationPermission? _permission;
   Position? _position;
@@ -237,6 +235,7 @@ class WeatherAppState extends State<WeatherApp> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(50, 15, 50, 0),
                             child: TextField(
+                              onSubmitted: (_) => _getWeatherByCityName(),
                               controller: _cityController,
                               decoration: InputDecoration(
                                 focusedBorder: OutlineInputBorder(
@@ -254,14 +253,15 @@ class WeatherAppState extends State<WeatherApp> {
                                       color: Color.fromARGB(223, 25, 166, 166)),
                                 ),
                                 suffixIcon: IconButton(
-                                    icon: Icon(Icons.search),
-                                    onPressed: () {
-                                      FocusScope.of(context).unfocus();
-                                      WidgetsBinding.instance
-                                          .addPostFrameCallback((_) {
-                                        _getWeatherByCityName();
-                                      });
-                                    }),
+                                  icon: Icon(Icons.search),
+                                  onPressed: () {
+                                    FocusScope.of(context).unfocus();
+                                    WidgetsBinding.instance
+                                        .addPostFrameCallback((_) {
+                                      _getWeatherByCityName();
+                                    });
+                                  },
+                                ),
                               ),
                             ),
                           ),
