@@ -53,7 +53,6 @@ class WeatherAppState extends State<WeatherApp> {
       final position = await Geolocator.getCurrentPosition();
       setState(() {
         _position = position;
-        //  print(position);
       });
       _getWeatherByLocation();
     } catch (e) {
@@ -103,7 +102,7 @@ class WeatherAppState extends State<WeatherApp> {
         _getCurrentTime(weather.timezone);
       });
     } catch (e) {
-      // Handle error, e.g. show error message to the user
+      // Handle error
     }
   }
 
