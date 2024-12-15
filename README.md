@@ -1,16 +1,20 @@
-# open_weather
+# Open Weather
 
-A new Flutter project.
+OpenWeather is a simple cross-platform Flutter application that provides 
+real-time weather updates for your current location or a specified city. 
+It is designed to run seamlessly on iOS, Android, Web, and Desktop platforms, 
+offering a unified experience across devices.
 
-## Getting Started
+Features
+:
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Real-time Weather Updates: Get instant weather data based on your current location or any city you search for.
+    Location Integration: Automatically fetches weather data for your current position using the device's location services.
+    Search by City: Manually search for weather details of any city.
+    Weather Details:
+    
+        Temperature (Current, Min, Max, Feels Like)
+        Weather Condition Description
+        Humidity Levels
+        Wind Speed
+        Local Time of the Location    
