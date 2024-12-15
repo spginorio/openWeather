@@ -7,10 +7,12 @@ import 'weather.dart';
 import 'weather_service.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-//flutter build apk --split-per-abi
-void main() {
+Future<void> main() async {
   tz.initializeTimeZones(); // Initialize timezone data
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: "assets/.env"); // Load environment variables
   runApp(WeatherApp());
 }
 

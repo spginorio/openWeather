@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <application
-        android:label="open_weather"
+        android:label="Open Weather"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
