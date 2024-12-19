@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:lottie/lottie.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import 'weather.dart';
 import 'weather_service.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+//import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -194,12 +195,17 @@ class WeatherAppState extends State<WeatherApp> {
                     Spacer(
                       flex: 2,
                     ),
-                    LoadingAnimationWidget.discreteCircle(
-                      color: const Color.fromARGB(255, 77, 177, 228),
-                      size: 90,
-                      secondRingColor: Colors.teal,
-                      thirdRingColor: Colors.orange,
-                    ),
+                    //! LOADING ANIMATION
+                    // LoadingAnimationWidget.discreteCircle(
+                    //   color: const Color.fromARGB(255, 77, 177, 228),
+                    //   size: 90,
+                    //   secondRingColor: Colors.teal,
+                    //   thirdRingColor: Colors.orange,
+                    // ),
+                    FittedBox(
+                        fit: BoxFit.contain,
+                        child: Lottie.asset("assets/cat.json",
+                            width: 140, height: 140)),
                     Spacer(
                       flex: 2,
                     ),
