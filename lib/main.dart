@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:lottie/lottie.dart';
+//import 'package:lottie/lottie.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 import 'weather.dart';
 import 'weather_service.dart';
-//import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
-  tz.initializeTimeZones(); // Initialize timezone data
+  tz.initializeTimeZones(); // Init timezone data
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: "assets/.env"); // Load environment variables
   runApp(WeatherApp());
@@ -163,7 +163,11 @@ class WeatherAppState extends State<WeatherApp> {
         //! -----------APP BAR------------
 
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 101, 138, 157),
+          backgroundColor: _weather!.temperature < 17 //TODO
+              ? Color.fromARGB(255, 119, 163, 185)
+              : (_weather!.temperature >= 17 && _weather!.temperature < 25
+                  ? Color.fromARGB(255, 155, 191, 121)
+                  : Color.fromARGB(255, 226, 158, 75)),
           centerTitle: true,
           title: Text(
             'Open Weather',
@@ -196,16 +200,16 @@ class WeatherAppState extends State<WeatherApp> {
                       flex: 2,
                     ),
                     //! LOADING ANIMATION
-                    // LoadingAnimationWidget.discreteCircle(
-                    //   color: const Color.fromARGB(255, 77, 177, 228),
-                    //   size: 90,
-                    //   secondRingColor: Colors.teal,
-                    //   thirdRingColor: Colors.orange,
-                    // ),
-                    FittedBox(
-                        fit: BoxFit.contain,
-                        child: Lottie.asset("assets/cat.json",
-                            width: 140, height: 140)),
+                    LoadingAnimationWidget.discreteCircle(
+                      color: const Color.fromARGB(255, 77, 177, 228),
+                      size: 90,
+                      secondRingColor: Colors.teal,
+                      thirdRingColor: Colors.orange,
+                    ),
+                    // FittedBox(
+                    //     fit: BoxFit.contain,
+                    //     child: Lottie.asset("assets/cat.json",
+                    //         width: 140, height: 140)),
                     Spacer(
                       flex: 2,
                     ),
@@ -343,17 +347,18 @@ class WeatherAppState extends State<WeatherApp> {
                                           style: TextStyle(
                                             fontSize: 36.0,
                                             fontWeight: FontWeight.bold,
-                                            color: _weather!.temperature < 17
+                                            color: _weather!.temperature <
+                                                    17 //TODO
                                                 ? Color.fromARGB(
-                                                    255, 34, 175, 240)
+                                                    255, 119, 163, 185)
                                                 : (_weather!.temperature >=
                                                             17 &&
                                                         _weather!.temperature <
                                                             25
                                                     ? Color.fromARGB(
-                                                        255, 94, 173, 21)
+                                                        255, 155, 191, 121)
                                                     : Color.fromARGB(
-                                                        255, 217, 154, 77)),
+                                                        255, 226, 158, 75)),
                                           ),
                                         ),
                                       ),

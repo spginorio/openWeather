@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class WeatherService {
+  // create a .env inside assets and add your api key. API_KEY="YOUR_API_KEY"
   static final String _apiKey = dotenv.env['API_KEY'] ?? '';
   static const String _baseUrl = 'https://api.openweathermap.org/data/2.5';
 
